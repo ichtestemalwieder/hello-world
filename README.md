@@ -1,4 +1,5 @@
-![alt text](http://url/to/img.png)(https://github.com/ichtestemalwieder/hello-world/workflows/Node%20CI/badge.svg)
+![alt text](https://github.com/ichtestemalwieder/hello-world/workflows/Node%20CI/badge.svg)
+![](https://github.com/actions/hello-world/workflows/Greet%20Everyone/badge.svg)
 
 # Welcome to GitHub xxxx
 
