@@ -38,8 +38,12 @@ jobs:
     - uses: actions/checkout@v1
     - name: npm install, build, and test
       run: |
+        pwd
+        ls -lisa 
         npm install
         npm run build --if-present
+        pwd
+        ls -lisa
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag ichtestemalwieder/ichtestemalwieder:$(date +%s)
     - name: Docker Login & Push
