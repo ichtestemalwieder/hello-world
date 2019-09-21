@@ -31,6 +31,12 @@ jobs:
  
     steps:
     - uses: actions/checkout@v1
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag ichtestemalwieder/ichtestemalwieder:$(date +%s)
+    - name: Docker Login 
+      run: docker login --username= ${{ secrets.DOCKER_USERNAME }} --email=${{ secrets.DOCKER_PASSWORD }}
+    - name: Docker publish    
+      run: docker publish ichtestemalwieder/ichtestemalwieder 
     - name: Publish to Registry
       uses: elgohr/Publish-Docker-Github-Action@master
       with:
