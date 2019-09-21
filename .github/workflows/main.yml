@@ -46,9 +46,9 @@ jobs:
         ls -lisa
 #TODO Tag by Pull-Requests as Branches and Master as Latest, the Docker Push Action actually doest exactly that
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag ichtestemalwieder/testrepo:${{github.sha}} --tag ichtestemalwieder/testrepo:latest
+      run: docker build . --file Dockerfile --tag ichtestemalwieder/myapp:${{github.sha}} --tag ichtestemalwieder/myapp:latest
     - name: Docker Login & Push
       run: |
          docker login --username=${{ secrets.DOCKER_USERNAME }} --password=${{ secrets.DOCKER_PASSWORD }}
-         docker push ichtestemalwieder/testrepo
+         docker push ichtestemalwieder/myapp
       
