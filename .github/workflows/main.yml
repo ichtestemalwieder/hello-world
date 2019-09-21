@@ -45,9 +45,9 @@ jobs:
         pwd
         ls -lisa
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag ichtestemalwieder/ichtestemalwieder1:$(date +%s)
+      run: docker build . --file Dockerfile --tag testrepo/testrepo:$(date +%s)
     - name: Docker Login & Push
       run: |
          docker login --username=${{ secrets.DOCKER_USERNAME }} --password=${{ secrets.DOCKER_PASSWORD }}
-         docker push ichtestemalwieder/ichtestemalwieder1
+         docker push testrepo/testrepo
       
