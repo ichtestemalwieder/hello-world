@@ -49,5 +49,5 @@ jobs:
     - name: Docker Login & Push
       run: |
          docker login --username=${{ secrets.DOCKER_USERNAME }} --password=${{ secrets.DOCKER_PASSWORD }}
-         docker push ichtestemalwieder/ichtestemalwieder
+         docker push ichtestemalwieder/ichtestemalwieder1
       
