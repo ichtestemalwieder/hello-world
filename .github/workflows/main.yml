@@ -45,7 +45,7 @@ jobs:
         pwd
         ls -lisa
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag ichtestemalwieder/testrepo:${{GITHUB_SHA}} --tag ichtestemalwieder/testrepo:latest
+      run: docker build . --file Dockerfile --tag ichtestemalwieder/testrepo:${{github.sha}} --tag ichtestemalwieder/testrepo:latest
     - name: Docker Login & Push
       run: |
          docker login --username=${{ secrets.DOCKER_USERNAME }} --password=${{ secrets.DOCKER_PASSWORD }}
