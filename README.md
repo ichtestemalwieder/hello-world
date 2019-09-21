@@ -1,8 +1,7 @@
+![alt text](https://github.com/ichtestemalwieder/hello-world/workflows/Node%20CI/badge.svg)
 
 # Welcome to GitHub xxxxx
 =======
-![alt text](https://github.com/ichtestemalwieder/hello-world/workflows/Node%20CI/badge.svg)
-![](https://github.com/actions/hello-world/workflows/Greet%20Everyone/badge.svg)
 
 Welcome to GitHub—where millions of developers work together on software. Ready to get started? Let’s learn how this all works by building and publishing your first GitHub Pages website!
 
