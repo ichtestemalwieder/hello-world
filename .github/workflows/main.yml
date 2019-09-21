@@ -34,7 +34,7 @@ jobs:
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag ichtestemalwieder/ichtestemalwieder:$(date +%s)
     - name: Docker Login 
-      run: docker login --username= ${{ secrets.DOCKER_USERNAME }} --email=${{ secrets.DOCKER_PASSWORD }}
+      run: docker login --username= ${{ secrets.DOCKER_USERNAME }} --username=${{ secrets.DOCKER_PASSWORD }}
     - name: Docker publish    
       run: docker publish ichtestemalwieder/ichtestemalwieder 
     - name: Publish to Registry
