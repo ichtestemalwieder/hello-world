@@ -35,7 +35,7 @@ jobs:
       run: docker build . --file Dockerfile --tag ichtestemalwieder/ichtestemalwieder:$(date +%s)
     - name: Docker Login 
       run: |
-         apt install gnupg2 pass
+         sudo apt install gnupg2 pass
          docker login --username= ${{ secrets.DOCKER_USERNAME }} --password=${{ secrets.DOCKER_PASSWORD }}
     - name: Docker publish    
       run: docker publish ichtestemalwieder/ichtestemalwieder 
