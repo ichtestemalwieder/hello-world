@@ -1,6 +1,9 @@
 name: Node CI
 
-on: [push]
+on: 
+  push: 
+    branches:    
+      - master 
 
 jobs:
   build:
@@ -38,15 +41,12 @@ jobs:
     - uses: actions/checkout@v1
     - name: npm install, build, and test
       run: |
-        pwd
-        ls -lisa 
         npm install
         npm run build --if-present
-        pwd
-        ls -lisa
 #TODO Tag by Pull-Requests as Branches and Master as Latest, the Docker Push Action actually doest exactly that
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag ichtestemalwieder/myapp:${{github.sha}} --tag ichtestemalwieder/myapp:latest
+      if: github.ref == 'refs/heads/master'
+      run:  echo ${{github.ref}} && docker build . --file Dockerfile --tag ichtestemalwieder/myapp:${{github.sha}} --tag ichtestemalwieder/myapp:latest
     - name: Docker Login & Push
       run: |
          docker login --username=${{ secrets.DOCKER_USERNAME }} --password=${{ secrets.DOCKER_PASSWORD }}
