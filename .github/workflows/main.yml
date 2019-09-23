@@ -48,4 +48,11 @@ jobs:
       run: |
          docker login --username=${{ secrets.DOCKER_USERNAME }} --password=${{ secrets.DOCKER_PASSWORD }}
          docker push ichtestemalwieder/myapp
-      
+    - name: Github Docker Repo Login & Push
+      if: github.ref == 'refs/heads/master' #Workaround
+      run: |
+         docker login docker.pkg.github.com --username=${{ secrets.DOCKER_USERNAME }} --password=${{secrets.REGISTRYPWD}}
+         docker tag myapp docker.pkg.github.com/ichtestemalwieder/hello-world/myapp:latest
+         docker push docker.pkg.github.com/ichtestemalwieder/hello-world/app:latest
+         docker push ichtestemalwieder/myapp
+                  
