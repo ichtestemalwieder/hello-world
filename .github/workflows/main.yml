@@ -1,9 +1,6 @@
 name: Node CI
 
-on: 
-  push: 
-    branches:    
-      - master 
+on: push
 
 jobs:
   build:
@@ -36,18 +33,18 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
- 
     steps:
     - uses: actions/checkout@v1
     - name: npm install, build, and test
+      if: github.ref == 'refs/heads/master' #Workaround, as no conditional jobs or dependant workflows are supported. Prevent execution for untrusted Pull-Requests.
       run: |
         npm install
         npm run build --if-present
-#TODO Tag by Pull-Requests as Branches and Master as Latest, the Docker Push Action actually doest exactly that
     - name: Build the Docker image
-      if: github.ref == 'refs/heads/master'
-      run:  echo ${{github.ref}} && docker build . --file Dockerfile --tag ichtestemalwieder/myapp:${{github.sha}} --tag ichtestemalwieder/myapp:latest
+      if: github.ref == 'refs/heads/master' #Workaround
+      run:  docker build . --file Dockerfile --tag ichtestemalwieder/myapp:${{github.sha}} --tag ichtestemalwieder/myapp:latest #TODO name by branch
     - name: Docker Login & Push
+      if: github.ref == 'refs/heads/master' #Workaround
       run: |
          docker login --username=${{ secrets.DOCKER_USERNAME }} --password=${{ secrets.DOCKER_PASSWORD }}
          docker push ichtestemalwieder/myapp
