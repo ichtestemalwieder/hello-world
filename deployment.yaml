@@ -6,7 +6,7 @@ metadata:
     run: hello-server-myapp1
   name: hello-server-myapp1
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       run: hello-server-myapp1
